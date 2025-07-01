@@ -1,7 +1,5 @@
 # Ignore data and results
 /data/
-/results/
-/reports/
 
 # Ignore Docker artifacts
 /docker/*.img
