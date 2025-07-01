@@ -7,9 +7,5 @@ dependencies:
   - python=3.10
   - nextflow
   - sra-tools
-  - curl
   - kraken2
   - multiqc
-  - jupyter
-  - numpy
-  - pandas 
