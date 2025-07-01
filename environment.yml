@@ -1,0 +1,15 @@
+name: soil-microbiome-pipeline
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.10
+  - nextflow
+  - sra-tools
+  - curl
+  - kraken2
+  - multiqc
+  - jupyter
+  - numpy
+  - pandas 
