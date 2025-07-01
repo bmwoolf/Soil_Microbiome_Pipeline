@@ -1,16 +1,19 @@
 #!/usr/bin/env nextflow
 
-params.data_dir = '../data'
-params.results_dir = '../results'
-params.reports_dir = '../reports'
+params.data_dir = './data'
+params.results_dir = './results'
+params.reports_dir = './reports'
 params.kraken2_db = null
 
-// Define input channel for paired-end FASTQ files
-def fastq_pairs = Channel.fromFilePairs("${params.data_dir}/*_{1,2}.fastq", flat: true)
+// Hardcoded paired-end input for one sample
+fastq_pairs = Channel.of(
+  ['SRR12416849', [file("${params.data_dir}/SRR12416849_1.fastq"), file("${params.data_dir}/SRR12416849_2.fastq")]]
+)
+
+fastq_pairs.view()
 
 process Kraken2 {
     publishDir params.results_dir, mode: 'copy'
-    container 'biocontainers/kraken2:v2.1.2_cv1'
     input:
         tuple val(sample_id), path(reads)
     output:
