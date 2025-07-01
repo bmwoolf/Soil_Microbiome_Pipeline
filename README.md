@@ -1,4 +1,4 @@
-![Banner](assets/banner.png)
+![Banner](assets/github_banner.png)
 
 # Soil Microbiome Pipeline (Cloud + Nextflow)
 
