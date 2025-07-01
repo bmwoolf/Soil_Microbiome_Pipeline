@@ -64,6 +64,7 @@ This environment includes: nextflow, sra-tools, kraken2, multiqc, curl, python, 
 4. **Outputs**
    - Kraken2 results: `results/`
    - MultiQC HTML report: `reports/multiqc_report.html`
+   - **Important:** To view the MultiQC HTML report, open it directly in your browser (double-click or drag-and-drop the file). Do not open it via a local server, as this may cause the browser to display raw code instead of rendering the report.
 
 ## Troubleshooting
 - **Command not found:** Make sure you have activated the conda environment (`conda activate soil-microbiome-pipeline`).
