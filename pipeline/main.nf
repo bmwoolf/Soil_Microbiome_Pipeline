@@ -18,26 +18,26 @@ process Kraken2 {
         tuple val(sample_id), path(reads)
     output:
         path "${sample_id}.kraken2"
+        path "${sample_id}.report", emit: report
     script:
     """
-    kraken2 --db ${params.kraken2_db} --paired --output ${sample_id}.kraken2 ${reads[0]} ${reads[1]}
+    kraken2 --db ${params.kraken2_db} --paired --output ${sample_id}.kraken2 --report ${sample_id}.report ${reads[0]} ${reads[1]}
     """
 }
 
 process MultiQC {
     publishDir params.reports_dir, mode: 'copy'
-    container 'ewels/multiqc:1.14'
     input:
         path kraken2_reports
     output:
         path 'multiqc_report.html'
     script:
     """
-    multiqc .
+    multiqc . --force
     """
 }
 
 workflow {
     kraken2_results = Kraken2(fastq_pairs)
-    MultiQC(kraken2_results)
+    MultiQC(kraken2_results.report)
 } 
