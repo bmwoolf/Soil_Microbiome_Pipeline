@@ -1,3 +1,5 @@
+![Banner](assets/banner.png)
+
 # Soil Microbiome Pipeline (Cloud + Nextflow)
 
 ## Overview
